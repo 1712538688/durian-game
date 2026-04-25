@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:id="@+id/connect_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="🦧 榴莲忘贩"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:padding="20dp"
+            android:textColor="#e6b422"/>
+
+        <TextView
+            android:text="Durian · 心理博弈"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:paddingBottom="20dp"
+            android:textColor="#a09080"/>
+
+        <EditText
+            android:id="@+id/nickname_input"
+            android:hint="输入昵称"
+            android:textSize="18sp"
+            android:padding="14dp"
+            android:background="#16213e"
+            android:textColor="#f0e6d3"
+            android:textColorHint="#666"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/create_btn"
+            android:text="🎮 创建房间"
+            android:textSize="18sp"
+            android:textColor="#1a1a2e"
+            android:background="#e6b422"
+            android:layout_marginBottom="10dp"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/ip_display"
+            android:text=""
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#2ecc71"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/ip_input"
+            android:hint="主机 IP 地址"
+            android:textSize="16sp"
+            android:padding="14dp"
+            android:background="#16213e"
+            android:textColor="#f0e6d3"
+            android:textColorHint="#666"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/join_btn"
+            android:text="▶️ 加入房间"
+            android:textSize="18sp"
+            android:textColor="#f0e6d3"
+            android:background="#3a6b5e"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+</LinearLayout>
