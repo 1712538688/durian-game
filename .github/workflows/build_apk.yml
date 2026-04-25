@@ -10,8 +10,23 @@ jobs:
       with:
         distribution: 'temurin'
         java-version: 17
-    - name: Make gradlew executable
-      run: chmod +x gradlew
+    - name: Setup Gradle Wrapper
+      run: |
+        cat > gradle/wrapper/gradle-wrapper.properties << 'EOF'
+        distributionBase=GRADLE_USER_HOME
+        distributionPath=wrapper/dists
+        distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
+        networkTimeout=10000
+        validateDistributionUrl=true
+        zipStoreBase=GRADLE_USER_HOME
+        zipStorePath=wrapper/dists
+        EOF
+        echo '#!/bin/sh' > gradlew
+        echo 'export GRADLE_USER_HOME=${GRADLE_USER_HOME:-$HOME/.gradle}' >> gradlew
+        echo 'cd "$(dirname "$0")" || exit' >> gradlew
+        echo 'exec java -cp "gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"' >> gradlew
+        chmod +x gradlew
+        gradle wrapper --gradle-version 8.2
     - name: Build APK
       run: ./gradlew assembleDebug
     - uses: actions/upload-artifact@v4
