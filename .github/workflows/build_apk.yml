@@ -12,6 +12,7 @@ jobs:
         java-version: 17
     - name: Setup Gradle Wrapper
       run: |
+        mkdir -p gradle/wrapper
         cat > gradle/wrapper/gradle-wrapper.properties << 'EOF'
         distributionBase=GRADLE_USER_HOME
         distributionPath=wrapper/dists
@@ -22,7 +23,6 @@ jobs:
         zipStorePath=wrapper/dists
         EOF
         echo '#!/bin/sh' > gradlew
-        echo 'export GRADLE_USER_HOME=${GRADLE_USER_HOME:-$HOME/.gradle}' >> gradlew
         echo 'cd "$(dirname "$0")" || exit' >> gradlew
         echo 'exec java -cp "gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"' >> gradlew
         chmod +x gradlew
